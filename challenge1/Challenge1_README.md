@@ -23,46 +23,8 @@ Resolution should be a Pull Request to this repo with the changes you made to th
 
 
 
-![img.png](challenge1/img.png)
+![img.png](img.png)
 
-## Install Netlab 
-```bash
-./setup.sh
-```
-
-## Download the Git Repo
-```bash
-git pull <>
-```
-
-## Bring up the lab
-```bash
-netplan up
-```
-
-## Confirm the lab is up
-```bash
-netplan status
-```
-
-## Restart the Lab / Apply Changes
-```bash
-netplan restart
-```
-
-### Connect to the devices
-```bash
-netlab connect <device name>
-vtysh 
-You can issue commands from the cli via  
-netlab connect <device name> --<show ommand>
-```
-
-### Validate the fix 
-```bash
-netlab validate
-```
- 
 Successful Validation should look like this 
 ```bash
 root@netlab/bgplab# netlab validate
