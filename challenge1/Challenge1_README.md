@@ -22,7 +22,6 @@ Run time changes can be test with the ``netlab validate`` command
 Resolution should be a Pull Request to this repo with the changes you made to the topology.yaml or any other files needed
 
 
-
 ![img.png](img.png)
 
 Successful Validation should look like this 
