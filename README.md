@@ -17,6 +17,11 @@ Getting Started
 git clone https://github.com/Perimeter81-Public/netlab.git
 ```
 
+### Change to the correct directory
+```bash
+cd challenge1
+```
+
 ## Bring up the lab
 ```bash
 netplan up
@@ -24,12 +29,12 @@ netplan up
 
 ## Confirm the lab is up
 ```bash
-netplan status
+netlab status
 ```
 
 ## Restart the Lab / Apply Changes
 ```bash
-netplan restart
+netlab restart
 ```
 
 ### Connect to the devices
