@@ -8,34 +8,26 @@ module: [ ospf ]
 nodes:
   r1:
     ospf.process: 100
-    ospf.area: 0
-    bgp.advertise_loopback: True
-    config: ['device_config/r1.j2']
+    ospf.area: 0.0.0.0
     id: 1
     loopback:
       ipv4: 10.0.0.1/32
   r2:
     ospf.process: 100
-    ospf.area: 0
-    bgp.advertise_loopback: True
-    config: ['device_config/r2.j2']
+    ospf.area: 0.0.0.0
     id: 2
     loopback:
        ipv4: 10.0.0.2/32
   r3:
     ospf.process: 100
-    ospf.area: 1
-    bgp.advertise_loopback: True
-    config: ['device_config/r3.j2']
-    id: 1
+    ospf.area: 0.0.0.1
+    id: 3
     loopback:
       ipv4: 10.0.0.3/32
   r4:
     ospf.process: 100
-    ospf.area: 1
-    bgp.advertise_loopback: True
-    config: ['device_config/r4.j2']
-    id: 2
+    ospf.area: 0.0.0.1
+    id: 4
     loopback:
        ipv4: 10.0.0.4/32
 
@@ -57,9 +49,9 @@ nodes:
 
 
 links:
-- r1-r2
-- r1-isp1
-- r2-isp2
+- r1:
+  r2:
+    ospf.passive: True
 - r1-server1
 - r2-server2
 - r3-h3
