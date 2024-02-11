@@ -1,0 +1,114 @@
+defaults.device: frr
+
+provider: clab
+defaults.providers.clab.bridge_type: ovs-bridge
+
+module: [ ospf ]
+
+nodes:
+  r1:
+    ospf.process: 100
+    ospf.area: 0
+    bgp.advertise_loopback: True
+    config: ['device_config/r1.j2']
+    id: 1
+    loopback:
+      ipv4: 10.0.0.1/32
+  r2:
+    ospf.process: 100
+    ospf.area: 0
+    bgp.advertise_loopback: True
+    config: ['device_config/r2.j2']
+    id: 2
+    loopback:
+       ipv4: 10.0.0.2/32
+  r3:
+    ospf.process: 100
+    ospf.area: 1
+    bgp.advertise_loopback: True
+    config: ['device_config/r3.j2']
+    id: 1
+    loopback:
+      ipv4: 10.0.0.3/32
+  r4:
+    ospf.process: 100
+    ospf.area: 1
+    bgp.advertise_loopback: True
+    config: ['device_config/r4.j2']
+    id: 2
+    loopback:
+       ipv4: 10.0.0.4/32
+
+  server1:
+    device: linux
+    id: 5
+
+  server2:
+    device: linux
+    id: 6
+
+  h3:
+    device: linux
+    id: 7
+
+  h4:
+    device: linux
+    id: 8
+
+
+links:
+- r1-r2
+- r1-isp1
+- r2-isp2
+- r1-server1
+- r2-server2
+- r3-h3
+- r4-h4
+- r3-r1
+- r4-r2
+
+
+validate:
+   wait:
+    description: Waiting for OSPF to converge
+    wait: 45
+
+   ping1:
+    description: Server1 Ping to H3
+    nodes: [ server1 ]
+    devices: [ linux ]
+    exec: ping -c 5 -W 1 -A h3
+    valid: |
+      "64 bytes" in stdout
+
+   ping2:
+    description: Server2 Ping to H4
+    nodes: [ server2 ]
+    devices: [ linux ]
+    exec: ping -c 5 -W 1 -A h4
+    valid: |
+      "64 bytes" in stdout
+
+   ping3:
+    description: Server1 Ping to Server2
+    nodes: [ server1 ]
+    devices: [ linux ]
+    exec: ping -c 5 -W 1 -A server2
+    valid: |
+      "64 bytes" in stdout
+
+   ping4:
+    description: Server1 Ping to H4
+    nodes: [ server1 ]
+    devices: [ linux ]
+    exec: ping -c 5 -W 1 -A h4
+    valid: |
+      "64 bytes" in stdout
+
+   ping5:
+    description: Server2 Ping to H3
+    nodes: [ server2 ]
+    devices: [ linux ]
+    exec: ping -c 5 -W 1 -A h3
+    valid: |
+      "64 bytes" in stdout
