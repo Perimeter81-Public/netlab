@@ -51,13 +51,18 @@ nodes:
 links:
 - r1:
   r2:
-    ospf.passive: True
 - r1-server1
 - r2-server2
 - r3-h3
 - r4-h4
-- r3-r1
-- r4-r2
+- r2:
+  r4:
+  ospf:
+    area: 0.0.0.1
+- r1:
+  r3:
+  ospf:
+    area: 0.0.0.1
 
 
 validate:
