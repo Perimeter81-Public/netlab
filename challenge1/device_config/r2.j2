@@ -3,6 +3,7 @@ frr defaults traditional
 ip route 10.0.0.1 255.255.255.255 eth1
 !
 ip prefix-list MARTIAN description Martian route filter
+ip prefix-list MARTIAN seq 10 deny 172.16.0.0/22 le 32
 ip prefix-list MARTIAN seq 15 permit 10.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 20 permit 127.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 25 permit 169.254.0.0/16 le 32
@@ -11,7 +12,6 @@ ip prefix-list MARTIAN seq 35 permit 192.0.2.0/24 le 32
 ip prefix-list MARTIAN seq 40 permit 192.168.0.0/16 le 32
 ip prefix-list MARTIAN seq 45 permit 198.18.0.0/15 le 32
 ip prefix-list MARTIAN seq 50 permit 224.0.0.0/3 le 32
-
 !
 route-map ISP-IN deny 10
  description Drop Non-Public Routable Traffic
@@ -21,11 +21,11 @@ route-map ISP-IN permit 20
  set metric 0
  set local-preference 110
 !
-route-map ISP-OUT deny 20
- description Drop Blackhole Traffic
- match ip address prefix-list BLACKHOLE
-
-route-map ISP-OUT permit 30
+route-map ISP-OUT deny 10
+ description Drop Non-Public Routable Traffic
+ match ip address prefix-list MARTIAN
+!
+route-map ISP-OUT permit 20
  description ISP Prefer Inbound
  set as-path prepend 65001
 !

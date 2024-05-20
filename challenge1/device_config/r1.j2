@@ -1,8 +1,9 @@
 frr defaults traditional
 !
-ip route 10.0.0.2 255.255.255.255 eth3
+ip route 10.0.0.2 255.255.255.255 eth1
 !
 ip prefix-list MARTIAN description Martian route filter
+ip prefix-list MARTIAN seq 10 deny 172.16.0.0/22 le 32
 ip prefix-list MARTIAN seq 15 permit 10.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 20 permit 127.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 25 permit 169.254.0.0/16 le 32
@@ -16,29 +17,21 @@ route-map ISP-IN deny 10
  description Drop Non-Public Routable Traffic
  match ip address prefix-list MARTIAN
 
-route-map ISP-IN deny 20
- description Drop Blackhole Traffic
- match ip address prefix-list BLACKHOLE
-
-route-map ISP-IN permit 30
+route-map ISP-IN permit 20
  set metric 0
  set local-preference 120
 !
 route-map ISP-OUT deny 10
  description Drop Non-Public Routable Traffic
  match ip address prefix-list MARTIAN
-
-route-map ISP-OUT deny 20
- description Drop Blackhole Traffic
- match ip address prefix-list BLACKHOLE
-
-route-map ISP-OUT permit 30
+!
+route-map ISP-OUT permit 20
  description ISP Prefer Inbound
  set as-path prepend 65001
 !
 router bgp {{ bgp.as }}
 {% for af in ['ipv4'] %}
-{%   for n in bgp.neighbors if n[af] is defined %}
+{% for n in bgp.neighbors if n[af] is defined %}
   neighbor {{ n[af] }} remote-as {{ n.as }}
   neighbor {{ n[af] }} description {{ n.name }}
 {%   if loopback[af] is defined and bgp.advertise_loopback %}

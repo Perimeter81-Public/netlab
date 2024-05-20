@@ -8,13 +8,13 @@ module: [ ospf ]
 nodes:
   r1:
     ospf.process: 100
-    ospf.area: 0.0.0.0
+    ospf.area: 0.0.0.1
     id: 1
     loopback:
       ipv4: 10.0.0.1/32
   r2:
     ospf.process: 100
-    ospf.area: 0.0.0.0
+    ospf.area: 0.0.0.1
     id: 2
     loopback:
        ipv4: 10.0.0.2/32
@@ -50,8 +50,9 @@ nodes:
 
 links:
 - r1:
+    ospf.area: 0.0.0.0
   r2:
-    ospf.passive: True
+    ospf.area: 0.0.0.0
 - r1-server1
 - r2-server2
 - r3-h3
