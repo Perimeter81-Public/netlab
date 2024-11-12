@@ -1,0 +1,34 @@
+{
+    "name": "Ubuntu 22.04 Development Environment",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash",
+      "editor.formatOnSave": true,
+      "files.autoSave": "afterDelay"
+    },
+    "extensions": [
+      "ms-vscode.cpptools",
+      "ms-python.python",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ],
+    "postCreateCommand": [
+       "bash panug/setup.sh"
+    ],
+    "remoteUser": "root",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-in-docker:1": {
+        "version": "latest"
+      },
+      "ghcr.io/devcontainers/features/python:1": {
+        "version": "3.9"
+      },
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts"
+      }
+    },
+    "mounts": [
+      "source=/path/to/local/dir,target=/workspace,type=bind"
+    ]
+  }
+  

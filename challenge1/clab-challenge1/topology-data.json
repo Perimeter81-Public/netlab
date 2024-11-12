@@ -1,0 +1,358 @@
+{
+  "name": "challenge1",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "netlab_mgmt",
+        "bridge": "br-f5e05be5c082",
+        "ipv4-subnet": "192.168.121.0/24",
+        "ipv4-gw": "192.168.121.1",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "h3": {
+      "index": "0",
+      "shortname": "h3",
+      "longname": "clab-challenge1-h3",
+      "fqdn": "h3.challenge1.io",
+      "group": "",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/h3",
+      "kind": "linux",
+      "image": "python:3.9-alpine",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.107",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/h3",
+        "clab-node-name": "h3",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "h4": {
+      "index": "1",
+      "shortname": "h4",
+      "longname": "clab-challenge1-h4",
+      "fqdn": "h4.challenge1.io",
+      "group": "",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/h4",
+      "kind": "linux",
+      "image": "python:3.9-alpine",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.108",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/h4",
+        "clab-node-name": "h4",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "isp1": {
+      "index": "2",
+      "shortname": "isp1",
+      "longname": "clab-challenge1-isp1",
+      "fqdn": "isp1.challenge1.io",
+      "group": "as64512",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/isp1",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "as64512",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/isp1",
+        "clab-node-name": "isp1",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "isp2": {
+      "index": "3",
+      "shortname": "isp2",
+      "longname": "clab-challenge1-isp2",
+      "fqdn": "isp2.challenge1.io",
+      "group": "as64513",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/isp2",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "as64513",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/isp2",
+        "clab-node-name": "isp2",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r1": {
+      "index": "4",
+      "shortname": "r1",
+      "longname": "clab-challenge1-r1",
+      "fqdn": "r1.challenge1.io",
+      "group": "as65001",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/r1",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "as65001",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/r1",
+        "clab-node-name": "r1",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r2": {
+      "index": "5",
+      "shortname": "r2",
+      "longname": "clab-challenge1-r2",
+      "fqdn": "r2.challenge1.io",
+      "group": "as65001",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/r2",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "as65001",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/r2",
+        "clab-node-name": "r2",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "server1": {
+      "index": "6",
+      "shortname": "server1",
+      "longname": "clab-challenge1-server1",
+      "fqdn": "server1.challenge1.io",
+      "group": "",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/server1",
+      "kind": "linux",
+      "image": "python:3.9-alpine",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.105",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/server1",
+        "clab-node-name": "server1",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    },
+    "server2": {
+      "index": "7",
+      "shortname": "server2",
+      "longname": "clab-challenge1-server2",
+      "fqdn": "server2.challenge1.io",
+      "group": "",
+      "labdir": "/workspaces/netlab/challenge1/clab-challenge1/server2",
+      "kind": "linux",
+      "image": "python:3.9-alpine",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.106",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f5e05be5c082",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/netlab/challenge1/clab-challenge1/server2",
+        "clab-node-name": "server2",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/workspaces/netlab/challenge1/clab.yml",
+        "containerlab": "challenge1"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "r1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:c1:95:fc",
+        "peer": "z"
+      },
+      "z": {
+        "node": "r2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:a8:fe:2d",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "r1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:5e:47:23",
+        "peer": "z"
+      },
+      "z": {
+        "node": "isp1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:81:cd:7a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "r2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:cb:93:75",
+        "peer": "z"
+      },
+      "z": {
+        "node": "isp2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:49:cc:e4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "r1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:40:34:41",
+        "peer": "z"
+      },
+      "z": {
+        "node": "server1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:da:64:a5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "r2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:de:4d:13",
+        "peer": "z"
+      },
+      "z": {
+        "node": "server2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b0:65:33",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "isp1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:2a:18:b5",
+        "peer": "z"
+      },
+      "z": {
+        "node": "h3",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b7:f5:2c",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "isp2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:17:8d:45",
+        "peer": "z"
+      },
+      "z": {
+        "node": "h4",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:7d:cc:53",
+        "peer": "a"
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+# Ansible inventory created from ['/workspaces/netlab/challenge1/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+bgp:
+  advertise_loopback: true
+  as: 64512
+  community:
+    ebgp:
+    - standard
+    - large
+    ibgp:
+    - standard
+    - large
+    - extended
+    ibgp_localas:
+    - standard
+    - large
+    - extended
+  ipv4: true
+  neighbors:
+  - activate:
+      ipv4: true
+    as: 65001
+    ifindex: 1
+    ipv4: 10.1.0.6
+    name: r1
+    type: ebgp
+  next_hop_self: true
+  originate:
+  - 172.16.2.0/24
+  router_id: 10.0.0.3
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/isp1/daemons:/etc/frr/daemons
+  - clab_files/isp1/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-challenge1-isp1
+interfaces:
+- ifindex: 1
+  ifname: eth1
+  ipv4: 10.1.0.5/30
+  linkindex: 2
+  mtu: 1500
+  name: isp1 -> r1
+  neighbors:
+  - ifname: eth2
+    ipv4: 10.1.0.6/30
+    node: r1
+  role: external
+  type: p2p
+- bgp:
+    advertise: true
+  bridge: challenge1_6
+  ifindex: 2
+  ifname: eth2
+  ipv4: 172.16.2.3/24
+  linkindex: 6
+  mtu: 1500
+  name: isp1 -> h3
+  neighbors:
+  - ifname: eth1
+    ipv4: 172.16.2.7/24
+    node: h3
+  role: stub
+  type: lan
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.3/32
+  neighbors: []
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.103
+  mac: 08:4f:a9:00:00:03
+module:
+- bgp
+mtu: 1500

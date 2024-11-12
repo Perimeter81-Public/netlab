@@ -1,0 +1,109 @@
+name: challenge1
+prefix: "clab"
+
+mgmt:
+  network: netlab_mgmt
+  ipv4-subnet: 192.168.121.0/24
+  # Note: 'start' not validated
+topology:
+  nodes:
+    r1:
+      mgmt-ipv4: 192.168.121.101
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      group: as65001
+      binds:
+      - clab_files/r1/daemons:/etc/frr/daemons
+      - clab_files/r1/hosts:/etc/hosts
+    r2:
+      mgmt-ipv4: 192.168.121.102
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      group: as65001
+      binds:
+      - clab_files/r2/daemons:/etc/frr/daemons
+      - clab_files/r2/hosts:/etc/hosts
+    isp1:
+      mgmt-ipv4: 192.168.121.103
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      group: as64512
+      binds:
+      - clab_files/isp1/daemons:/etc/frr/daemons
+      - clab_files/isp1/hosts:/etc/hosts
+    isp2:
+      mgmt-ipv4: 192.168.121.104
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      group: as64513
+      binds:
+      - clab_files/isp2/daemons:/etc/frr/daemons
+      - clab_files/isp2/hosts:/etc/hosts
+    server1:
+      mgmt-ipv4: 192.168.121.105
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: 
+      binds:
+      - clab_files/server1/hosts:/etc/hosts
+    server2:
+      mgmt-ipv4: 192.168.121.106
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: 
+      binds:
+      - clab_files/server2/hosts:/etc/hosts
+    h3:
+      mgmt-ipv4: 192.168.121.107
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: 
+      binds:
+      - clab_files/h3/hosts:/etc/hosts
+    h4:
+      mgmt-ipv4: 192.168.121.108
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: 
+      binds:
+      - clab_files/h4/hosts:/etc/hosts
+
+
+  links:
+  - endpoints:
+    - "r1:eth1"
+    - "r2:eth1"
+  - endpoints:
+    - "r1:eth2"
+    - "isp1:eth1"
+  - endpoints:
+    - "r2:eth2"
+    - "isp2:eth1"
+  - endpoints:
+    - "r1:eth3"
+    - "server1:eth1"
+  - endpoints:
+    - "r2:eth3"
+    - "server2:eth1"
+  - endpoints:
+    - "isp1:eth2"
+    - "h3:eth1"
+  - endpoints:
+    - "isp2:eth2"
+    - "h4:eth1"
