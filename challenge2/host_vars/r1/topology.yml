@@ -1,0 +1,85 @@
+# Ansible inventory created from ['/home/sama/netlab/challenge2/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/r1/daemons:/etc/frr/daemons
+  - clab_files/r1/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-challenge2-r1
+interfaces:
+- ifindex: 1
+  ifname: eth1
+  ipv4: 10.1.0.1/30
+  linkindex: 1
+  mtu: 1500
+  name: r1 -> r2
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.2/30
+    node: r2
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- bridge: challenge2_2
+  ifindex: 2
+  ifname: eth2
+  ipv4: 172.16.0.1/24
+  linkindex: 2
+  mtu: 1500
+  name: r1 -> server1
+  neighbors:
+  - ifname: eth1
+    ipv4: 172.16.0.5/24
+    node: server1
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: true
+  role: stub
+  type: lan
+- ifindex: 3
+  ifname: eth3
+  ipv4: 10.1.0.5/30
+  linkindex: 6
+  mtu: 1500
+  name: r1 -> r3
+  neighbors:
+  - ifname: eth2
+    ipv4: 10.1.0.6/30
+    node: r3
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: false
+  type: p2p
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.1/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.0
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.101
+  mac: 08:4f:a9:00:00:01
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.0
+  process: 100
+  router_id: 10.0.0.1

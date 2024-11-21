@@ -1,0 +1,55 @@
+graph {
+  bgcolor="transparent"
+  node [shape=box, style="rounded,filled" fontname=Verdana]
+  edge [fontname=Verdana labelfontsize=10 labeldistance=1.5]
+  subgraph cluster_AS_64512 {
+    bgcolor="#e8e8e8"
+    fontname=Verdana
+    margin=16
+    label="AS 64512"
+    "isp1" [
+      label="isp1 [frr]\n10.0.0.3/32"
+      fillcolor="#ff9f01"
+      margin="0.3,0.1"
+    ]
+  }
+  subgraph cluster_AS_64513 {
+    bgcolor="#e8e8e8"
+    fontname=Verdana
+    margin=16
+    label="AS 64513"
+    "isp2" [
+      label="isp2 [frr]\n10.0.0.4/32"
+      fillcolor="#ff9f01"
+      margin="0.3,0.1"
+    ]
+  }
+  subgraph cluster_AS_65001 {
+    bgcolor="#e8e8e8"
+    fontname=Verdana
+    margin=16
+    label="AS 65001"
+    "r1" [
+      label="r1 [frr]\n10.0.0.1/32"
+      fillcolor="#ff9f01"
+      margin="0.3,0.1"
+    ]
+    "r2" [
+      label="r2 [frr]\n10.0.0.2/32"
+      fillcolor="#ff9f01"
+      margin="0.3,0.1"
+    ]
+  }
+  "isp1" -- "r1"  [
+    color="#b21a1a"
+    penwidth=2.5 arrowsize=0.7 dir=both
+  ]
+  "isp2" -- "r2"  [
+    color="#b21a1a"
+    penwidth=2.5 arrowsize=0.7 dir=both
+  ]
+  "r1" -- "r2"  [
+    color="#613913"
+    penwidth=2.5 arrowsize=0.7 dir=both
+  ]
+}

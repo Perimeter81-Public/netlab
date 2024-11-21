@@ -1,0 +1,5 @@
+# Ansible inventory created from ['/home/sama/netlab/challenge2/topology.yml', 'package:topology-defaults.yml']
+#
+
+netlab_module:
+- ospf

@@ -6,12 +6,12 @@ ip prefix-list MARTIAN description Martian route filter
 ip prefix-list MARTIAN seq 15 permit 10.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 20 permit 127.0.0.0/8 le 32
 ip prefix-list MARTIAN seq 25 permit 169.254.0.0/16 le 32
-ip prefix-list MARTIAN seq 30 permit 172.16.0.0/12 le 32
+ip prefix-list MARTIAN seq 30 deny 172.16.0.0/12 le 32
 ip prefix-list MARTIAN seq 35 permit 192.0.2.0/24 le 32
 ip prefix-list MARTIAN seq 40 permit 192.168.0.0/16 le 32
 ip prefix-list MARTIAN seq 45 permit 198.18.0.0/15 le 32
 ip prefix-list MARTIAN seq 50 permit 224.0.0.0/3 le 32
-
+ip prefix-list ALLOWED seq 10 permit 172.16.0.0/12
 !
 route-map ISP-IN deny 10
  description Drop Non-Public Routable Traffic

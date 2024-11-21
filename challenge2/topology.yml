@@ -20,13 +20,13 @@ nodes:
        ipv4: 10.0.0.2/32
   r3:
     ospf.process: 100
-    ospf.area: 0.0.0.1
+    ospf.area: 0.0.0.0
     id: 3
     loopback:
       ipv4: 10.0.0.3/32
   r4:
     ospf.process: 100
-    ospf.area: 0.0.0.1
+    ospf.area: 0.0.0.0
     id: 4
     loopback:
        ipv4: 10.0.0.4/32
@@ -51,7 +51,6 @@ nodes:
 links:
 - r1:
   r2:
-    ospf.passive: True
 - r1-server1
 - r2-server2
 - r3-h3

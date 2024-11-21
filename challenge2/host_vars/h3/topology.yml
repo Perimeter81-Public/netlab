@@ -1,0 +1,35 @@
+# Ansible inventory created from ['/home/sama/netlab/challenge2/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: python:3.9-alpine
+clab:
+  binds:
+  - clab_files/h3/hosts:/etc/hosts
+  config_templates:
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-challenge2-h3
+interfaces:
+- bridge: challenge2_4
+  gateway:
+    ipv4: 172.16.2.3/24
+  ifindex: 1
+  ifname: eth1
+  ipv4: 172.16.2.7/24
+  linkindex: 4
+  mtu: 1500
+  name: h3 -> r3
+  neighbors:
+  - ifname: eth1
+    ipv4: 172.16.2.3/24
+    node: r3
+  role: stub
+  type: lan
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.107
+  mac: 08:4f:a9:00:00:07
+mtu: 1500
+role: host

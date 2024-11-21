@@ -3,7 +3,7 @@ defaults.device: frr
 provider: clab
 defaults.providers.clab.bridge_type: ovs-bridge
 
-module: [ bgp ]
+module: [ bgp, ospf ]
 
 nodes:
   r1:
@@ -13,6 +13,7 @@ nodes:
     id: 1
     loopback:
       ipv4: 10.0.0.1/32
+      
   r2:
     bgp.as: 65001
     bgp.advertise_loopback: True
@@ -20,6 +21,7 @@ nodes:
     id: 2
     loopback:
        ipv4: 10.0.0.2/32
+       
   isp1:
     bgp.originate: [ 172.16.2.0/24 ]
     bgp.as: 64512
